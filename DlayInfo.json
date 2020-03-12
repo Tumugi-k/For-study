@@ -15,6 +15,26 @@
 	{
 		"name":"八高線",
 		"url":"https://transit.yahoo.co.jp/traininfo/detail/52/0/"
+	},
+	{
+		"name":"京浜東北根岸線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/22/0/"
+	},
+	{
+		"name":"宇都宮線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/46/46/"
+	},
+	{
+		"name":"埼京川越線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/50/0/"
+	},
+	{
+		"name":"湘南新宿ライン",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/25/0//"
+	},
+	{
+		"name":"上野東京ライン",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/627/0/"
 	}
 ]
 }
