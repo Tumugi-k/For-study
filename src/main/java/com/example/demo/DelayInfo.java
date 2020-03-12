@@ -23,9 +23,6 @@ public class DelayInfo {
 				if(name.equals(train)) {
 					Info = name + "ならわかるー" + "\n" + "リンク送るね!" + "\n" + url;
 					RC = 1;
-				}else if(name.matches(train + ".*")) {
-					Info = "もしかして" + name + "かな？";
-					RC = 2;
 				}
 			}
 			if(RC == 0) {
