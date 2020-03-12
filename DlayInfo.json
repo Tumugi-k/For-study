@@ -1,0 +1,20 @@
+{	
+"info":[
+	{
+		"name":"中央線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/38/0/"
+	},
+	{
+		"name":"山手線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/21/0/"
+	},
+	{
+		"name":"中央総武線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/40/0/"
+	},
+	{
+		"name":"八高線",
+		"url":"https://transit.yahoo.co.jp/traininfo/detail/52/0/"
+	}
+]
+}
