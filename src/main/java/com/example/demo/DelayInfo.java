@@ -20,7 +20,7 @@ public class DelayInfo {
 			for(JsonNode n : root.get("info")) {
 				String name = n.get("name").asText();
 				String url = n.get("url").asText();
-				if(name.contains(train)) {
+				if(name.matches(".*" + train + ".*")) {
 					Info = name + "ならわかるー" +"\n"+"リンク送るね!" +"\n"+ url;
 					RC = 1;
 				}
