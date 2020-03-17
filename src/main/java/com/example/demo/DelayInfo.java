@@ -10,6 +10,7 @@ public class DelayInfo {
 	
 	public static void main(String[] args) {
 	}
+
 	
 	public static String DlayInfo(String msg) {
 		try {
@@ -25,8 +26,8 @@ public class DelayInfo {
 					RC = 1;
 				}
 			}
-			if(RC == 0) {
-				Info = "ごめん、それはわかんない。。。";
+			if(RC == 1) {
+				Info = "え、なんですか？";
 			}
 			return Info;
 		} catch (IOException ioe) {

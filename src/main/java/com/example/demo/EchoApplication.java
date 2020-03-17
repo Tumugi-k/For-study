@@ -25,10 +25,16 @@ public class EchoApplication {
 		final String msg = event.getMessage().getText();
 		switch(msg) {
 		case "天気":
-			return new TextMessage("雲の上はいつだって晴れなのだ");
+			//天気予報取得メソッドのreturnをセットする
+			final String WetherInfoText = "いいお天気ですね";
+			return new TextMessage(WetherInfoText);
+		case "気温":
+			//現在の気温取得メソッドのreturnをセットする
+			final String TempInfoText = "今日は寒いですね";
+			return new TextMessage(TempInfoText);
 		default:
-			final String OriginalMessageText = DelayInfo.DlayInfo(msg);
-			return new TextMessage(OriginalMessageText);
+			final String DelayInfoText = DelayInfo.DlayInfo(msg);
+			return new TextMessage(DelayInfoText);
 		}	
     }
     
