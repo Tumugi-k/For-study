@@ -26,7 +26,7 @@ public class DelayInfo {
 					RC = 1;
 				}
 			}
-			if(RC == 1) {
+			if(RC == 0) {
 				Info = "え、なんですか？";
 			}
 			return Info;
