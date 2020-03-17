@@ -21,7 +21,7 @@ public class DelayInfo {
 				String name = n.get("name").asText();
 				String url = n.get("url").asText();
 				if(name.equals(msg)) {
-					Info = name + "ならわかるー" + "\n" + "リンク送るね!" + "\n" + url;
+					Info = name + "ならわかりますよ、" + "\n" + "リンクを送りますね。" + "\n" + url;
 					RC = 1;
 				}
 			}
