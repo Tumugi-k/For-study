@@ -22,9 +22,14 @@ public class EchoApplication {
     
 	@EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
-        final String train = event.getMessage().getText();
-        final String OriginalMessageText = DelayInfo.DlayInfo(train);
-        return new TextMessage(OriginalMessageText);
+		final String msg = event.getMessage().getText();
+		switch(msg) {
+		case "天気":
+			return new TextMessage("雲の上はいつだって晴れなのだ");
+		default:
+			final String OriginalMessageText = DelayInfo.DlayInfo(msg);
+			return new TextMessage(OriginalMessageText);
+		}	
     }
     
     
