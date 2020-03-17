@@ -11,7 +11,6 @@ public class DelayInfo {
 	public static void main(String[] args) {
 	}
 
-	
 	public static String DlayInfo(String msg) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -26,7 +25,7 @@ public class DelayInfo {
 					RC = 1;
 				}
 			}
-			if(RC == 0) {
+			if (RC == 0) {
 				Info = "え、なんですか？";
 			}
 			return Info;

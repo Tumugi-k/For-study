@@ -23,19 +23,25 @@ public class EchoApplication {
 	@EventMapping
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
 		final String msg = event.getMessage().getText();
+		String OriginalTextMessage = null;
 		switch(msg) {
 		case "天気":
 			//天気予報取得メソッドのreturnをセットする
-			final String WetherInfoText = "いいお天気ですね";
-			return new TextMessage(WetherInfoText);
+			OriginalTextMessage = "いいお天気ですね";
+			break;
+		case "温度":
 		case "気温":
 			//現在の気温取得メソッドのreturnをセットする
-			final String TempInfoText = "今日は寒いですね";
-			return new TextMessage(TempInfoText);
+			OriginalTextMessage = "今日は寒いですね";
+			break;
+		case "遅延":
+		case "電車":
+			OriginalTextMessage = "何線の情報が知りたい？";
+			break;
 		default:
-			final String DelayInfoText = DelayInfo.DlayInfo(msg);
-			return new TextMessage(DelayInfoText);
+			OriginalTextMessage = DelayInfo.DlayInfo(msg);			
 		}	
+		return new TextMessage(OriginalTextMessage);
     }
     
     
