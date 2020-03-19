@@ -23,7 +23,7 @@ public class WeatherInfo {
 			JsonNode root = mapper.readTree(str);
 			final String telop = root.get("forecasts").get(0).get("telop").asText();
 			System.out.println(telop);
-			Info = "今日の東京の天気は" + "\n" + telop + "\n" + "です。";
+			Info = "今日の東京の天気は\"" + telop + "\"です。";
 			if(telop.contains("雨")) {
 				Info += "\n" + "傘は持ちましたか？";
 			}
