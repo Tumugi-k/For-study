@@ -27,19 +27,21 @@ public class EchoApplication {
 		switch(msg) {
 		case "天気":
 			//天気予報取得メソッドのreturnをセットする
-			OriginalTextMessage = "いいお天気ですね";
+			OriginalTextMessage = WeatherInfo.main();
+			System.out.println(OriginalTextMessage);
 			break;
 		case "温度":
 		case "気温":
 			//現在の気温取得メソッドのreturnをセットする
-			OriginalTextMessage = "今日は寒いですね";
+			OriginalTextMessage = WeatherInfo.TemperatureInfo();
+			System.out.println(OriginalTextMessage);
 			break;
 		case "遅延":
 		case "電車":
-			OriginalTextMessage = "何線の情報が知りたい？";
+			OriginalTextMessage = "何線の情報が知りたいですか？";
 			break;
 		default:
-			OriginalTextMessage = DelayInfo.DlayInfo(msg);			
+			OriginalTextMessage = DelayInfo.main(msg);			
 		}	
 		return new TextMessage(OriginalTextMessage);
     }

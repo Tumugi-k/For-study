@@ -8,10 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DelayInfo {
 	
-	public static void main(String[] args) {
-	}
-
-	public static String DlayInfo(String msg) {
+	public static String main(String msg) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode root = mapper.readTree(new File("DlayInfo.json"));
