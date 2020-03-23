@@ -48,29 +48,29 @@ public class WeatherInfo {
 			String str = reader.readLine();
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode root = mapper.readTree(str);
-			int nowTemperature = Integer.parseInt(root.get("forecasts").get(0).get("temperature").get("max").get("celsius").asText());
-			String comment = null;
-			int check = Integer.parseInt(null);
-			if(nowTemperature != check) {
-				
-				if(nowTemperature >= 28) {
+			String nowTemperature = root.get("forecasts").get(0).get("temperature").get("max").get("celsius").asText();
+			String comment = "";
+			System.out.println("ぬるぽ");
+			if(!(nowTemperature.equals("null"))) {
+				int temp = Integer.parseInt(nowTemperature);
+				if(temp >= 28) {
 					comment = "暑い";
-				}else if(nowTemperature < 28 && nowTemperature >= 18) {
+				}else if(temp < 28 && temp >= 18) {
 					comment = "暖かい";
-				}else if(nowTemperature < 18 && nowTemperature >= 14) {
+				}else if(temp < 18 && temp >= 14) {
 					comment = "涼しい";
 				}else {
 					comment = "寒い";
 				}
 				Info = "今日の最高気温は" + nowTemperature + "℃です。" + "\n" + comment + "ですね。";
-			}else {
+			} else {
 				Info = "すみません、気温の情報が取得できませんでした。";
 			}
 			return Info;
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-		return null;
+		return Info;
 	}
 	
 }
