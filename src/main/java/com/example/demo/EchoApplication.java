@@ -1,14 +1,20 @@
 package com.example.demo;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.linecorp.bot.model.action.MessageAction;
 import com.linecorp.bot.model.event.Event;
 import com.linecorp.bot.model.event.MessageEvent;
 import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.Message;
 import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.message.quickreply.QuickReply;
+import com.linecorp.bot.model.message.quickreply.QuickReplyItem;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
@@ -24,17 +30,41 @@ public class EchoApplication {
     public Message handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
 		final String msg = event.getMessage().getText();
 		String OriginalTextMessage = null;
+		int n = 10;
 		switch(msg) {
 		case "天気":
-			//天気予報取得メソッドのreturnをセットする
-			OriginalTextMessage = WeatherInfo.main();
-			System.out.println(OriginalTextMessage);
+			final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
+					QuickReplyItem.builder()
+	                .action(new MessageAction("今日", "今日"))
+	                .build(),
+	                QuickReplyItem.builder()
+	                .action(new MessageAction("明日", "明日"))
+	                .build(),
+	                QuickReplyItem.builder()
+	                .action(new MessageAction("明後日", "明後日"))
+	                .build()
+	                );
+			final QuickReply quickReply = QuickReply.items(items);
+			return TextMessage
+	                .builder()
+	                .text("いつの天気が知りたいですか？")
+	                .quickReply(quickReply)
+	                .build();
+		case "今日":
+			n = 0;
+			OriginalTextMessage = WeatherInfo.Info(n);
+			break;
+		case "明日":
+			n = 1;
+			OriginalTextMessage = WeatherInfo.Info(n);
+			break;
+		case "明後日":
+			n = 2;
+			OriginalTextMessage = WeatherInfo.Info(n);
 			break;
 		case "温度":
 		case "気温":
-			//現在の気温取得メソッドのreturnをセットする
 			OriginalTextMessage = WeatherInfo.TemperatureInfo();
-			System.out.println(OriginalTextMessage);
 			break;
 		case "遅延":
 		case "電車":
@@ -45,7 +75,6 @@ public class EchoApplication {
 		}	
 		return new TextMessage(OriginalTextMessage);
     }
-    
     
     @EventMapping
     public void handleDefaultMessageEvent(Event event) {
