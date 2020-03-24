@@ -8,28 +8,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DelayInfo {
 	
-	public static String main(String msg) {
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			JsonNode root = mapper.readTree(new File("DlayInfo.json"));
-			String Info = null;
-			int RC = 0;
-			for(JsonNode n : root.get("info")) {
-				String name = n.get("name").asText();
-				String url = n.get("url").asText();
-				if(name.equals(msg)) {
-					Info = name + "ならわかりますよ、" + "\n" + "リンクを送りますね。" + "\n" + url;
-					RC = 1;
-				}
+	public static String main(String msg) throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode root = mapper.readTree(new File("DlayInfo.json"));
+		String Info = null;
+		for(JsonNode n : root.get("info")) {
+			String name = n.get("name").asText();
+			String url = n.get("url").asText();
+			if(name.equals(msg)) {
+				Info = name + "ならわかりますよ、" + "\n" + "リンクを送りますね。" + "\n" + url;
 			}
-			if (RC == 0) {
-				Info = "え、なんですか？";
-			}
-			return Info;
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
 		}
-		return null;
+		return Info;
 	}
 
 }

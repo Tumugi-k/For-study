@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class EchoApplication {
 		final String msg = event.getMessage().getText();
 		String OriginalTextMessage = null;
 		int n = 10;
+		try {
 		switch(msg) {
 		case "天気":
 			final List<QuickReplyItem> items = Arrays.<QuickReplyItem>asList(
@@ -71,11 +73,18 @@ public class EchoApplication {
 			OriginalTextMessage = "何線の情報が知りたいですか？";
 			break;
 		default:
-			OriginalTextMessage = DelayInfo.main(msg);			
-		}	
+			OriginalTextMessage = DelayInfo.main(msg);		
+		}
+		if(OriginalTextMessage == null) {
+			String type = "不明";
+			OriginalTextMessage = RandomReply.main(type);
+		}
 		return new TextMessage(OriginalTextMessage);
+		}catch (IOException ioe) {
+			return new TextMessage("エラーが発生しました");
+		}
     }
-    
+	
     @EventMapping
     public void handleDefaultMessageEvent(Event event) {
         System.out.println("event: " + event);
